@@ -1,0 +1,543 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css\blog2style.css' %}">
+    <title>Nursery STORE - BLOG</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+   
+<header class="main_header">
+    
+    <div class="d-flex justify-content-center align-items-center flex-column py-5">
+        <h1 class="main_heading">Nursery STORE</h1>
+        <p class="main_heading__para"> Welcome to our <span class="text-capitalize bg-dark text-white py-2 px-3">world of Blogs</span>  </p>
+    </div>
+    <!---the main image-->
+    <div class="main_header__div d-flex align-items-start justify-content-center pl-5 flex-column shadow" style="background-image: url('/static/photos/main.jpg')">
+       <!-- <p>E-NURSERY</p>-->
+        <h2 class="animateword">
+          <span>PLANTS ARE</span>
+          <div>
+            <ul class="flip">
+                <li>life</li>
+                <li>everything</li>
+                <li>emotion</li>
+                <li>love</li>
+            </ul>
+          </div>  
+        </h2>
+        <button class="text-uppercase">Explore more</button>
+    </div> 
+</header>
+
+<!--header end-->
+<!--two sides div-->
+<div class="row">
+    <!--to get left and right side div space-->   
+    <div class="col-xl-10 col-lg-10 col-md-11 col-11 mx-auto my-5">
+        <div class="row gx-5 mx-sm-auto">
+             <!--to get the left side of the div space-->
+            <div class="col-lg-8 col-md-11 col-11 mx-auto">
+                <div class="row gy-5">
+                    <!---first blog-->
+                    <div class="col-12 card p-4 shadow blog_left__div">
+                        <div class="d-flex justify-content-center align-items-center flex-column pt-3 pb-5">
+                            <h1>TAKE CARE OF YOUR PLANTS</h1>
+                            <p class="blog_title"> <span class="font-weight-bold">  Title description, </span> April 30,2024 </p>
+                        </div>
+                        <figure class="right_side__img mb-5">
+                              <img src="{% static 'photos/mother-child-down.jpg' %}" class="img-fluid shadow">
+                        </figure>
+                        <p> <span class="font-weight-bold">How to care plants</span>
+                            Make sure you use good quality soil—dark red soil would have higher levels of nutrients to help your plants thrive. Aerate the top soil once in ten days by shuffling it around with a stick or a fork. A fresh sprinkle of fertiliser every two months will also boost your plant health.
+                        </p>
+                        <p>
+                            Give your plants a nice trim every three months (depending on their growth rate) to stimulate regrowth. Prune after your plants have bloomed; and do the same with unopened buds and leaves—remember to wait till they grow.
+                            Keep an eye out for weeds, bugs, caterpillars and other insects that weaken plants and munch on the leaves.
+                        </p>
+                        <div class="d-flex justify-content-between left_div_btns">
+                            <div>
+                                <button class="left_div__like" id="like_btn">
+                                    <i class="fas fa-thumbs-up"></i> LIKE
+                                </button>
+                            </div>
+                            <div>
+                                <button class="left_div__reply" onclick="reply('reply1')">
+                                    Replies <badge class="bg-white text-dark p-2">3</badge>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="replies" id="reply1">
+                            <div class="d-flex justify-content-start flex-row
+                               align-self-center card reply_card py-3">
+                               <div class="reply_img mx-2 align-items-center">
+                                   <img src="https://img.icons8.com/doodle/48/000000/user-male-skin-type-5.png" />
+
+                               </div>
+                               <div class="reply_text__left">
+                                   <p class="blog_title">
+                                    <span class="font-weight-bold">Prabhat</span> April 12,2024 </p>
+                                    <p>Thank you for sharing  this great blog. That is really  great. Thanks for sharing information...</p>
+                                    
+                               </div>
+                               
+                            </div>
+                            <div class="d-flex justify-content-start flex-row
+                               align-self-center card reply_card py-3">
+                               <div class="reply_img mx-2 align-items-center">
+                                   <img src="https://img.icons8.com/doodle/48/000000/user-male-skin-type-5.png" />
+
+                               </div>
+                               <div class="reply_text__left">
+                                   <p class="blog_title">
+                                    <span class="font-weight-bold"> Sanu</span> Feb 05,2024</p>
+                                    <p>I like your collection of plants.</p>
+                                    
+                               </div>
+                               
+                            </div>
+                            <div class="d-flex justify-content-start flex-row
+                               align-self-center card reply_card py-3">
+                               <div class="reply_img mx-2 align-items-center">
+                                   <img src="https://img.icons8.com/doodle/48/000000/user-male-skin-type-5.png" />
+                                </div>
+                               <div class="reply_text__left">
+                                   <p class="blog_title">
+                                    <span class="font-weight-bold"> Hanu</span> July 22,2023 </p>
+                                    <p>Your E-nursery blog is good for beginners.</p>
+                                    
+                               </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                       <!--second blog-->
+                       
+                    <div class="col-12 card p-4 shadow blog_left__div">
+                        <div class="d-flex justify-content-center align-items-center flex-column pt-3 pb-5">
+                            <h1>DECORE YOUR HOME!</h1>
+                            <p class="blog_title"> <span class="font-weight-bold">  Title description, </span> April 30,2024 </p>
+                        </div>
+                        <figure class="right_side__img mb-5">
+                              <img src="{% static 'photos/p14.jpg' %}" class="img-fluid shadow">
+                        </figure>
+                        <p> <span class="font-weight-bold">Decorate your house with plants</span>
+                            Place your plants on bookshelves, windowsills or on tables around your living room. You can also use bigger floor plants in empty corners of the room. Choose plants for their light needs, mix sizes for visual interest, and use unique pots & hangers to match your living room design.
+
+                        </p>
+                        <p>
+                            Plants are more than just a pretty addition. They're a breath of fresh air, literally! Plants improve the interior appearance, purify the air, and promote a calming atmosphere. This, in turn, enhances both mental and physical well-being.
+                            In this blog, we'll take you through everything you need to know about bringing the power of plants into your home.
+                        </p>
+                        <div class="d-flex justify-content-between left_div_btns">
+                            <div>
+                                <button class="left_div__like" id="like_btn">
+                                    <i class="fas fa-thumbs-up"></i> LIKE
+                                </button>
+                            </div>
+                            <div>
+                                <button class="left_div__reply" onclick="reply('reply2')">
+                                    Replies <badge class="bg-white text-dark p-2">2</badge>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="replies" id="reply2">
+                            <div class="d-flex justify-content-start flex-row
+                               align-self-center card reply_card py-3">
+                               <div class="reply_img mx-2 align-items-center">
+                                   <img src="https://img.icons8.com/doodle/48/000000/user-male-skin-type-5.png" />
+
+                               </div>
+                               <div class="reply_text__left">
+                                   <p class="blog_title">
+                                    <span class="font-weight-bold"> Satyam</span> April 12,2024 </p>
+                                    <p>Your E-Nursery is very helpful for my home.</p>
+                                    
+                               </div>
+                               
+                            </div>
+                            <div class="d-flex justify-content-start flex-row
+                               align-self-center card reply_card py-3">
+                               <div class="reply_img mx-2 align-items-center">
+                                   <img src="https://img.icons8.com/doodle/48/000000/user-male-skin-type-5.png" />
+
+                               </div>
+                               <div class="reply_text__left">
+                                   <p class="blog_title">
+                                    <span class="font-weight-bold"> Anubhav</span> Feb 05,2024</p>
+                                    <p>Thank you! I found that really helpful. Those tips are lovely..</p>
+                                    
+                               </div>
+                               
+                            </div>
+                            
+                        </div>
+                    </div>
+                     <!--third blog-->
+                     
+                    <div class="col-12 card p-4 shadow blog_left__div">
+                        <div class="d-flex justify-content-center align-items-center flex-column pt-3 pb-5">
+                            <h1>PLANT A SEED OF LOVE</h1>
+                            <p class="blog_title"> <span class="font-weight-bold">  Title description, </span> April 30,2024 </p>
+                        </div>
+                        <figure class="right_side__img mb-5">
+                              <img src="{% static 'photos/p5.jpg' %}" class="img-fluid shadow">
+                        </figure>
+                        <p> <span class="font-weight-bold">Show love for environment</span>
+                            Trees help to clean our air, filter our drinking water, purify our soil and provide habitat to over 80% of the world’s terrestrial biodiversity. Forests also provide jobs to over 1.6 billion people worldwide and provide key medicinal ingredients.
+                            But trees are under threat from climate change, urban development, pollution and attack from tree diseases and pests.
+                        </p>
+                        <p>
+                            Eating seasonal, local produce helps to reduce the environmental footprint of your food, using less energy (and associated CO2 emissions) for growing and transportation. It also helps to supports the local economy and, as seasonal fruit and vegetables are picked at their natural taste and nutritional peak, quite often tastes better too.
+                        </p>
+                        <div class="d-flex justify-content-between left_div_btns">
+                            <div>
+                                <button class="left_div__like" id="like_btn">
+                                    <i class="fas fa-thumbs-up"></i> LIKE
+                                </button>
+                            </div>
+                            <div>
+                                <button class="left_div__reply" onclick="reply('reply3')">
+                                    Replies <badge class="bg-white text-dark p-2">1</badge>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="replies" id="reply3">
+                            
+                            <div class="d-flex justify-content-start flex-row
+                               align-self-center card reply_card py-3">
+                               <div class="reply_img mx-2 align-items-center">
+                                   <img src="https://img.icons8.com/doodle/48/000000/user-male-skin-type-5.png" />
+
+                               </div>
+                               <div class="reply_text__left">
+                                   <p class="blog_title">
+                                    <span class="font-weight-bold"> Hanu</span> Feb 05,2024</p>
+                                    <p>Your fertilization tips are very useful.</p>
+                                    
+                               </div>
+                               
+                            </div>
+                           
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+                <!--to get right side div-->
+            <div class="col-lg-4 col-md-7 col-7 mx-auto">  
+            
+                <div class=" row gy-5">
+                
+               
+                
+                   <div class="col-lg-12 shadow blog_right__div">
+                    
+                    
+                    
+                    <div class="d-flex justify-content-end  flex-column">
+                        <h2>Some Tips:</h2>
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                          <!-- Indicators -->
+                          <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                          </ol>
+                      
+                          <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                      
+                                <div class=" item active align-items-center">
+                                    <img src="{% static 'photos/caring.jpg' %}" alt="Los Angeles" style="width: 100%; height: 100%;">
+                                     <h3>Water the plants sufficiently to encourage the development of deep roots. A gentle sprinkle might not be enough since it promotes the formation of shallow roots.If possible, water your plants first thing in the morning.
+                                        It may take as much as ¾ or a gallon of water to thoroughly water a 10 to 12 inch container.
+                                        You want to err on the side of giving you plants less than enough water. 
+                                          
+                                    </h3>
+                                </div>
+                      
+                                <div class="item">
+                                   <img src="{% static 'photos/women-planting.jpg' %}" alt="Chicago" style="width: 100%; height: 60%;">
+                                   <h3>Now it's time to let the plant know you'd like to converse with it. This simple act is a little like knocking on a friend's door before coming in for a cup of coffee and a chat. In this case, you silently state his, her, or its name three times. This is easy to do.
+                                    You might want to start talking to the plant now: explain why you want to talk today. Explain why plants are important to you. 
+                                </h3>
+                                </div>
+                          
+                                <div class="item">
+                                   <img src="{% static 'photos/girl-transplanting.jpg' %}" alt="New York" style="width: 100%; height: 60%;">
+                                    <h3>Water the plant a few hours before you transplant it.
+                                        Water the plant thoroughly, then wait 1 hour; this will dampen the soil and make it easier to remove the root ball. If you are transplanting a seedling, wait until it forms a pair of true leaves. True leaves are hardier than the delicate leaves you see at first.
+                                        If you are transplanting a seedling, wait until it forms a pair of true leaves. 
+                                    </h3>
+                                </div>
+                            </div>
+                          
+                      
+                          <!-- Left and right controls -->
+                          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                          
+                            <div class="tips">
+                                 <h3>Some points:</h3>
+                                <ol>
+                                  <li>
+                                    Don’t overwater your plants: Some plants don’t need watering at all during monsoons because of the high level of humidity in the air,but the opposite may apply during summers.
+                                  </li>
+                                    <li> Position them right:
+                                        It is also imperative that you pay attention to the amount of sunlight your plant need. If it requires minimum sunlight, place it indoors, next to a window for a partially warm spot. 
+                                    </li>
+                                    <li>Use kitchen waste:
+                                        Anything organic that comes out of your kitchen is nutrition for your plants. Used tea leaves, coffee grounds, powdered eggshells and banana peels will all provide your plants with useful nutrients, and you can also take it one step further by recycling the water you used to wash grains, lentils and veggies to water your plants.
+                                    </li>
+                                    
+                                    
+                                </ol>
+                          </div>
+                        </div>  
+                       
+                    </div>     
+                  </div> 
+                       
+                    
+                
+                   <!---second right-->
+                   <div class="col-lg-12 shadow blog_right__div">
+                    
+                    
+                    
+                    <div class="d-flex justify-content-end  flex-column">
+                        <h2>Some Tips:</h2>
+                        <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+                          <!-- Indicators -->
+                          <ol class="carousel-indicators">
+                            <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel2" data-slide-to="1"></li>
+                            <li data-target="#myCarousel2" data-slide-to="2"></li>
+                          </ol>
+                      
+                          <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                      
+                                <div class=" item active align-items-center">
+                                    <img src="{% static 'photos/p16.jpg' %}" alt="Los Angeles" style="width: 100%; height: 100%;">
+                                     <h3>Try keeping leafy table plants for home on your dining table, like lucky bamboo, palms, nerve plant, dracaena, hoya, ficus and zebra plant. For low-light dining table conditions, the snake plant and ZZ plant would work well too.
+                                         Keeping indoor table plants is not only a great hobby to inculcate, but they add to the natural aesthetic of your space.Decor your living room with coffee tables are the best.
+                                    </h3>
+                                </div>
+                      
+                                <div class="item">
+                                   <img src="{% static 'photos/p17.jpg' %}" alt="Chicago" style="width: 100%; height: 60%;">
+                                   <h3>Attach pots, shelves, or trellises to the walls; and if your balcony has a ceiling, add a few hooks for hanging plants. Cover the railings of your balcony with chicken wire to support climbing plants, or purchase plant hangers that can be attached to the top of a railing.
+                                    likes of: Ferns, ivies, fatsia, hydrangeas, delphiniums, lupins, foxgloves, snapdragons, pansies and other perennial bedding plants.
+                                    </h3>
+                                </div>
+                          
+                                <div class="item">
+                                   <img src="{% static 'photos/p18.jpg' %}" alt="New York" style="width: 100%; height: 60%;">
+                                    <h3>Office plant decor offers both aesthetic and practical advantages. These plants enhance office spaces with added colour and design elements, suitable for various decor styles.
+                                        One of the best plants to keep on the office desk is hanging plants such as Spider plants and Devil's Ivy. These are perfect for adding a touch of greenery to any space. They take up minimal floor space.
+                                    
+                                    </h3>
+                                </div>
+                            </div>
+                          
+                      
+                          <!-- Left and right controls -->
+                          <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control" href="#myCarousel2" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                          
+                            <div class="tips">
+                                 <h3>Some points:</h3>
+                                <ol>
+                                  <li>
+                                    Transform a Bar Cart: Not in the mood for cocktails? Take an empty bar cart and use it as a plant stand. Wheels make it easy to move green friends throughout the house as needed. 
+                                  </li>
+                                    <li> Have Fun With Vines: Shape your vines so that they wrap around a mirror. This will help keep dangling leaves off the floor and add some pep to your front hall. Who says decorating with greenery is only for the holiday season?
+                                    </li>
+                                    <li> Style a Hutch: Transform a hutch into a sophisticated plant storage system by filling the shelves with various sizes of pots. Don't be afraid to stack some on top if your collection begins to overflow a little.
+                                    </li>
+                                    <li>Add Cheer to Your Home Office: Add some plant life to your home workspace to make long days in front of the computer. 
+                                        
+                                      </li>
+                                        
+                                         
+                                        
+                                </ol>
+                            </div>
+                        </div>  
+                        
+                    </div>    
+                  </div> 
+                      
+                  
+                    <!--third right-->
+                    <div class="col-lg-12 shadow blog_right__div">
+                    
+                    
+                    
+                        <div class="d-flex justify-content-end  flex-column">
+                            <h2>Some Tips:</h2>
+                            <div id="myCarousel3" class="carousel slide" data-ride="carousel">
+                              <!-- Indicators -->
+                              <ol class="carousel-indicators">
+                                <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel3" data-slide-to="1"></li>
+                                <li data-target="#myCarousel3" data-slide-to="2"></li>
+                              </ol>
+                          
+                              <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                          
+                                    <div class=" item active align-items-center">
+                                        <img src="{% static 'photos/p4.jpg' %}" alt="Los Angeles" style="width: 100%; height: 220px;">
+                                         <h3>You can start seeds in almost any type of container, as long as it's at least 2-3" deep and has some drainage holes. If you are the DIY type, you might want to grow seedlings in recycled yogurt cups, milk cartons or paper cups. However trays that are made especially for seed starting are easy to fill with grow medium, convenient to move, and have proper drainage already in place underneath. The weed growth is stimulated over field.
+                                         </h3>
+                                    </div>
+                          
+                                    <div class="item">
+                                       <img src="{% static 'photos/p6 new.jpg' %}" alt="Chicago" style="width: 100%; height: 220px;">
+                                       <h3>If you're growing in a window, choose a south-facing exposure.Rotate the pots regularly to keep plants from leaning into the light.If seedlings don't get enough light, they will be leggy and weak.If you're growing under lights, adjust them so they're just a few inches above the tops of the seedlings.
+                                        If you're growing under lights, adjust them so they're just a few inches above the tops. Set the lights on a timer for 15 hours.
+                                    </h3>
+                                    </div>
+                              
+                                    <div class="item">
+                                       <img src="{% static 'photos/ferti.jpeg' %}" alt="New York" style="width: 100%; height: 100%;">
+                                        <h3>Simply mix the fertilizer with water and apply. If you want to use BAC's organic bloom organic fertilizer, you should mix 20-30 ml of fertilizer with 10 liters of water and apply to the soil.
+                                            When they're more actively growing in the spring and summer, they benefit from a little liquid fertilizer mixed into their water about once a month.
+                                            If you're not one to remember to do that, go for slow-release granules.
+                                        </h3>
+                                    </div>
+                                </div>
+                              
+                          
+                              <!-- Left and right controls -->
+                              <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="right carousel-control" href="#myCarousel3" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                             
+                                <div class="tips">
+                                     <h3>Some points:</h3>
+                                    <ol>
+                                      <li>Broadcasting: It refers to spreading fertilizers uniformly all over the field.
+                                        Suitable for crops with dense stand, the plant roots permeate the whole volume of the soil, large doses of fertilizers are applied and insoluble phosphatic fertilizers such as rock phosphate are used.
+                                        
+                                      </li>
+                                        <li>Placement: It refers to the placement of fertilizers in soil at a specific place with or without reference to the position of the seed.
+                                            Placement of fertilizers is normally recommended when the quantity of fertilizers to apply is small, development of the root system is poor, soil have a low level of fertility and to apply phosphatic and potassic fertilizer.
+                                            
+                                        </li>
+                                        <li>Drilling: This method has been found suitable for the application of phosphatic and potassic fertilizers in cereal crops, but sometimes germination of seeds and young plants may get damaged due to higher concentration of soluble salts.
+                                        </li>    
+                                    </ol>
+                              </div>
+                            </div>  
+                            
+                        </div>
+                    </div>     
+    
+
+
+                    
+                
+                </div>   
+                     
+                    
+
+                 
+                              
+                       
+                           
+                           
+                         
+                        
+                         
+                    
+                         
+            </div>
+                 
+                
+                     
+                    
+                       
+        </div>
+    </div>
+</div>
+<div class="text">
+    <h1>FOR MORE HELP</h1>
+    <div id="container">
+        <div>
+            <iframe width="400" height="200" src="https://www.youtube.com/embed/oZcKTf4RLQ8?si=hZb1oJmb-nyXiMOn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <h3 style="color: brown; text-align: center;">CARE OF PLANTS</h3>
+        </div>
+    
+        <div>
+            <iframe width="400" height="200" src="https://www.youtube.com/embed/MEGdcf4jKD0?si=CvyHtCCC_VWH2lCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <h3 style="color: brown; text-align: center;">HOME DECORATING PLANTS</h3>
+        </div>
+    
+        <div>
+            <iframe width="400" height="200" src="https://www.youtube.com/embed/ekFy7q49RqM?si=_fAEXP6nY8jHzk-P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <h3 style="color: brown; text-align: center;">SEEDS LOVE</h3>
+    </div>
+    </div>
+    
+</div>
+<div class="social_bg">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIWBFFffZxd73f-0MU46Xal2Ii3UC7r7Ot6zSR2C75KYHB8mH5wliDfSKDaPkzaK1sQBltgJ79aHDFMklv2MZak2u6zU1Ge1jdQLdyxM7yvpkOC7_yS0zqvO47MAije5r5ZHNECymbhjw1ZoenTYZ2XCMwA3-HLWXfpOIgsWGqI5zLiuha9CHry1duJSM/s445/LogoBottom.png" alt="Logo" class="bottom">
+    <div class="social-media-icons">
+        <a href="https://www.youtube.com"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXq_-tnnUbeovhqwUkeg92d_A2HbyTrE_R_kdlf8T-aOjKI8S_TB5Z2YeEOXaQRZYHaYFi4pYwjnFQjNRgq4KP2w_1queUitjg31uAOvhAg_9jwE20CjV7SBIzRVE5xCi55OAOlMOwOYnNY9FbG7EOjP7RCw2GEBcL7sTOS3tWNijNCTqwn7ZVwCXjVgM/s512/YouTube.png" alt="YouTube"></a>
+        <a href="https://www.facebook.com"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisnIpiOj_4OS0QyEL8jsTlYqoSGj2-Tjw9LzZ_T6uhr6Vh5zZ5lVtfs7259uF1kTb3fK8OFtHWPI5XB3icbf9TL2-sHUjnhZRwGef1QmmL7uJMNZYZ-uKrU0KqO-8apwk1sz73E3RioKLpbAfJDRKJc-QZLl5XXBZ7quroekKxQaZVRVuw_hlSN64eFJ4/s512/FaceBook.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpgIeDQP4XT3ZkGlXOJFKY6Sn9WxtuNaoLHgwx2psOEgaVwR20f5GUH2A2tfdfq1HVgky1rhVcb5ARce9H79vNupeb2S1V_LQjvmqnewy77KRrmQtdBQ5bNqybupS8DFX52-VoeUNvoTkz3KWgLQpklytK9toLKHKacChcJ6uBSId1XOcQOcQSbIB2GVs/s512/InstaGram.png" alt="Instagram"></a>
+        <a href="https://twitter.com"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyE4biLrR3B7XnQ_Xigle-ruM7FzfIQvL6heMhyphenhyphennofSRXmrj3xCff4rclpJvN-EfHcuOBr47iMin5jXJVQ6M57TrTnFFyoKhwV6mSHCjFpgAsPVslmhzwPqJJa_gDeOg1D06DT6GSnpRFTsRvj40F7JUHZPuPBXI7apL_g3B2orAgIT0b3DE6Z8CNB78g/s512/TwiTter.png" alt="Twitter"></a>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    const reply = (res) => {
+        var res = document.getElementById(res);
+        console.log(res);
+         if (res.className == "replies") {
+            res.className = "owl";
+         }  else if (res.className == "owl") {
+            res.className = "replies";
+         }
+        
+
+    }
+
+
+
+    
+</script>
+</body>
+</html>

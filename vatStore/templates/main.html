@@ -1,0 +1,1691 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/assets/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <title>E-Nursery</title>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+      <nav class="nav container" style="margin: 2px; margin-top: 5px; ">
+            <a href="#" class="nav__logo">
+                <i class="ri-leaf-line nav__logo-icon"></i><h3 style="font: 2em sans-serif; color: green; letter-spacing: 2px;">Nursery Store</h3>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list"  style="margin: 170px; ">
+                    <li class="nav__item">
+                        <a href="{% url 'main' %}" class="nav__link active-link"><b>Home</b></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link"><b>About</b></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="{% url 'home' %}" class="nav__link"><b>Products</b></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="{% url 'blog' %}" class="nav__link"><b>Blog</b></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link"><b>Contact</b></a>
+                    </li>
+                    <li class="nav__item">
+                      <a href="#faqs" class="nav__link"><b>FAQs</b></a>
+                  </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+
+            <div class="nav__btns">
+                <i class="ri-moon-line change-theme" id="theme-button"></i>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+
+      
+            {% if user.is_authenticated %}
+              
+   <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'update_user' %}">User Profile</a></li>
+                <li><hr class="dropdown-divider" /></li>
+<li><a class="dropdown-item" href="{% url 'update_info'  %}">User Info</a></li>
+                            </ul>
+                        </li>
+
+
+               <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+               <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+
+               <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+
+            {% endif %}
+
+            <button class="header-action-btn" aria-label="Open shopping cart" data-panel-btn="cart">
+              <a href="{% url 'cart_summary' %}"><ion-icon name="cart-outline"></ion-icon></a>
+  
+              <data class="btn-badge" value="2"></data>
+            </button>
+                    
+                </div>
+            </div>
+        </nav>
+        <!-- <nav class="nav container" style="margin: 2px; margin-top: 5px; ">
+            <a href="#" class="nav__logo">
+                <i class="ri-leaf-line nav__logo-icon"></i><h3 style="font: 2em sans-serif; color: green; letter-spacing: 2px;">VATS Store</h3>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list"  style="margin: 170px; ">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link"><b>Home</b></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link"><b>About</b></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/products" class="nav__link"><b>Products</b></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#blog" class="nav__link"><b>Blog</b></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link"><b>Contact</b></a>
+                    </li>
+                    <li class="nav__item">
+                      <a href="#faqs" class="nav__link"><b>FAQs</b></a>
+                  </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+
+            <div class="nav__btns">
+                <i class="ri-moon-line change-theme" id="theme-button"></i>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+
+
+            <div class="header-action">
+              <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn"><img src="/static/assets/pp.png" width="40" height="30" alt=""></button>
+                <div id="myDropdown" class="dropdown-content">                 
+                  <a href="{% url 'logout' %}">Logout</a>                 
+                  <a href="/">Order Summary</a>
+                </div>
+              </div> 
+
+                <div class="search-wrapper" data-search-wrapper>
+      
+                  <button class="header-action-btn" aria-label="Toggle search" data-search-btn>
+                    <ion-icon name="search-outline" class="search-icon"></ion-icon>
+                    <ion-icon name="close-outline" class="close-icon"></ion-icon>
+                  </button>
+      
+                  <div class="input-wrapper">
+                    <input type="search" name="search" placeholder="Search here" class="search-input">
+      
+                    <button class="search-submit" aria-label="Submit search">
+                      <ion-icon name="search-outline"></ion-icon>
+                    </button>
+                  </div>
+      
+                </div>
+      
+                <button class="header-action-btn" aria-label="Open whishlist" data-panel-btn="whishlist">
+                  <ion-icon name="heart-outline"></ion-icon>
+      
+                  <data class="btn-badge" value="3"></data>
+                </button> -->
+       
+                <!-- <button class="header-action-btn" aria-label="Open shopping cart" data-panel-btn="cart">
+                  <a href="{% url 'cart_summary' %}"><ion-icon name="cart-outline"></ion-icon></a>
+      
+                  <data class="btn-badge" value="2"></data>
+                </button> -->
+
+                
+                
+      
+            <!-- </div>
+          </div>
+
+        </nav>
+   -->
+  
+    </header>
+
+    <main class="main">
+
+        <!--<aside class="aside">
+
+            <div class="side-panel" data-side-panel="whishlist">
+        
+              <button class="panel-close-btn" aria-label="Close whishlist" data-panel-btn="whishlist">
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+        
+              <ul class="panel-list">
+        
+                <li class="panel-item">
+                  <a href="./product-details.html" class="panel-card">
+        
+                    <figure class="item-banner">
+                      <img src="/static/assets/product-small-1.png" width="46" height="46" loading="lazy"
+                        alt="Vermillion Rose">
+                    </figure>
+        
+                    <div>
+                      <p class="item-title">Vermillion Rose Plant</p>
+        
+                      <span class="item-value">₹78.15     x1</span>
+                    </div>
+        
+                    <button class="item-close-btn" aria-label="Remove item">
+                      <ion-icon name="close-outline"></ion-icon>
+                    </button>
+        
+                  </a>
+                </li>
+        
+                <li class="panel-item">
+                  <a href="./product-details.html" class="panel-card">
+        
+                    <figure class="item-banner">
+                      <img src="/static/assets/product-small-2.png" width="46" height="46" loading="lazy" alt="Spider Lily">
+                    </figure>
+        
+                    <div>
+                      <p class="item-title">Spider Lily</p>
+        
+                      <span class="item-value">₹199.25      x2</span>
+                    </div>
+        
+                    <button class="item-close-btn" aria-label="Remove item">
+                      <ion-icon name="close-outline"></ion-icon>
+                    </button>
+        
+                  </a>
+                </li>
+        
+                <li class="panel-item">
+                  <a href="./product-details.html" class="panel-card">
+        
+                    <figure class="item-banner">
+                      <img src="/static/assets/product-small-3.png" width="46" height="46" loading="lazy"
+                        alt="Rubber Plant">
+                    </figure>
+        
+                    <div>
+                      <p class="item-title">Rubber Plant</p>
+        
+                      <span class="item-value">₹113.15      x1</span>
+                    </div>
+        
+                    <button class="item-close-btn" aria-label="Remove item">
+                      <ion-icon name="close-outline"></ion-icon>
+                    </button>
+        
+                  </a>
+                </li>
+        
+              </ul>
+        
+              <div class="subtotal">
+                <p class="subtotal-text">Subtotal:</p>
+        
+                <data class="subtotal-value" value="589.8">₹589.8 INR</data>
+              </div>
+        
+              <a href="./whishlist.html" class="panel-btn">View Whishlist</a>
+        
+            </div>
+        
+            <div class="side-panel" data-side-panel="cart">
+        
+              <button class="panel-close-btn" aria-label="Close cart" data-panel-btn="cart">
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+        
+              <ul class="panel-list">
+        
+                <li class="panel-item">
+                  <a href="./product-details.html" class="panel-card">
+        
+                    <figure class="item-banner">
+                      <img src="/static/assets/product-small-1.png" width="46" height="46" loading="lazy"
+                        alt="Vermillion Rose">
+                    </figure>
+        
+                    <div>
+                      <p class="item-title">Vermillion Rose Plant</p>
+        
+                      <span class="item-value">₹78.15     x1</span>
+                    </div>
+        
+                    <button class="item-close-btn" aria-label="Remove item">
+                      <ion-icon name="close-outline"></ion-icon>
+                    </button>
+        
+                  </a>
+                </li>
+        
+                <li class="panel-item">
+                  <a href="./product-details.html" class="panel-card">
+        
+                    <figure class="item-banner">
+                      <img src="/static/assets/product-small-2.png" width="46" height="46" loading="lazy" alt="Spider Lily">
+                    </figure>
+        
+                    <div>
+                      <p class="item-title">Spider Lily</p>
+        
+                      <span class="item-value">₹199.25      x2</span>
+                    </div>
+        
+                    <button class="item-close-btn" aria-label="Remove item">
+                      <ion-icon name="close-outline"></ion-icon>
+                    </button>
+        
+                  </a>
+                </li>
+        
+              </ul>
+        
+              <div class="subtotal">
+                <p class="subtotal-text">Subtotal:</p>
+        
+                <data class="subtotal-value" value="476.65">₹476.65 INR</data>
+              </div>
+        
+              <a href="/" class="panel-btn">View Cart</a>
+        
+            </div>
+        
+          </aside>
+        -->
+        
+        
+        
+        <!--==================== HOME ====================-->
+        <section class="home" id="home">
+            <div class="home__container container grid">
+                <img src="/static/assets/home.png" alt="Home" class="home__img">
+                <div class="home__data">
+                    <h1 class="home__title">Plants will make <br> your life better</h1>
+                    <p class="home__description">Create incredible plant design for your offices and apartments. Add
+                        freshness to new ideas.</p>
+                    <a href="#about" class="button button--flex">Explore <i
+                            class="ri-arrow-right-down-line button__icon"></i></a>
+                </div>
+                <div class="home__social">
+                    <span class="home__social-follow">Follow Us</span>
+                    <div class="home__social-links">
+                        <a href="https://www.facebook.com" target="_blank" class="home__social-link"><i class="ri-facebook-fill"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" class="home__social-link"><i class="ri-instagram-line"></i></a>
+                        <a href="https://www.twitter.com" target="_blank" class="home__social-link"><i class="ri-twitter-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        - #SERVICE
+      -->
+
+      <section class="section service">
+        <div class="container">
+
+          <ul class="service-list">
+
+            <li class="service-item">
+              <div class="item-icon">
+                <img src="/static/assets/service-icon-1.png" width="40" height="40" loading="lazy" alt="Truck icon">
+              </div>
+
+              <h3 class="h3 item-title">Free Shipping</h3>
+            </li>
+
+            <li class="service-item">
+              <div class="item-icon">
+                <img src="/static/assets/service-icon-2.png" width="40" height="40" loading="lazy"
+                  alt="Payment card icon">
+              </div>
+
+              <h3 class="h3 item-title">Safe Payment</h3>
+            </li>
+
+            <li class="service-item">
+              <div class="item-icon">
+                <img src="/static/assets/service-icon-3.png" width="40" height="40" loading="lazy" alt="Helpline icon">
+              </div>
+
+              <h3 class="h3 item-title">24/7 Support</h3>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section container" id="about">
+            <div class="about__container grid">
+                <img src="/static/assets/about3.png" class="about__img">
+
+                <div class="about__data">
+                    <h2 class="section__title about__title">
+                        Who we really are & <br> why choose us
+                    </h2>
+
+                    <p class="about__description">
+                        We have over 4000+ reviews and our customers rust our plant process and delivery service every
+                        time
+                    </p>
+
+                    <div class="about__details">
+                        <p class="about__details-description">
+                            <i class="ri-checkbox-fill about__details-icon"></i>We always deliver on time.
+                        </p>
+                        <p class="about__details-description">
+                            <i class="ri-checkbox-fill about__details-icon"></i>We give you guides to protect and care
+                            for
+                            your plants.
+                        </p>
+                        <p class="about__details-description">
+                            <i class="ri-checkbox-fill about__details-icon"></i>We always come over for a check-up after
+                            sale.
+                        </p>
+                        <p class="about__details-description">
+                            <i class="ri-checkbox-fill about__details-icon"></i>100% money back guaranteed.
+                        </p>
+                    </div>
+
+                    <a href="{% url 'AboutUs' %}" class="button--link button--flex">Learn More <i
+                            class="ri-arrow-right-down-line button__icon"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== STEPS ====================-->
+        <section class="steps section container">
+            <div class="steps__bg">
+                <h2 class="section__title-center steps__title">Steps to start your plants off right</h2>
+                <div class="steps__container grid">
+
+                    <div class="steps__card">
+                        <div class="steps__card-number">01</div>
+                        <h3 class="steps__card-title">Choose Plant</h3>
+                        <p class="steps__card-description">We have several varieties of plants you can choose from.</p>
+                    </div>
+
+                    <div class="steps__card">
+                        <div class="steps__card-number">02</div>
+                        <h3 class="steps__card-title">Place an order</h3>
+                        <p class="steps__card-description">Once your order is set, we move to the next step which is the
+                            shipping.</p>
+                    </div>
+
+                    <div class="steps__card">
+                        <div class="steps__card-number">03</div>
+                        <h3 class="steps__card-title">Get plants delivered</h3>
+                        <p class="steps__card-description">Our delivery process is simple, you receive the plant
+                            directly to your door.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        - #OFFERS
+      
+
+      <section class="section offers">
+        <div class="container">
+
+          <ul class="offers-list has-scrollbar">
+
+            <li class="offers-item">
+              <a href="{% url 'home' %}" class="offers-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/offer-1.png" width="292" height="230" loading="lazy"
+                    alt="Indoor & Outdoor Plants" class="w-100">
+                </figure>
+
+                <div class="card-content">
+                  <p class="card-subtitle">Up To 25% Off</p>
+
+                  <h3 class="h3 card-title">Indoor & Outdoor Plants.</h3>
+
+                  <div class="btn btn-primary"><a href="{% url 'home' %}"></a>Shop Now</div>
+                </div>
+
+              </a>
+            </li>
+
+            <li class="offers-item">
+              <a href="{% url 'home' %}" class="offers-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/offer-2 (1).png" width="336" height="244" loading="lazy"
+                    alt="Seeds & Fertilizers" class="w-100">
+                </figure>
+
+                <div class="card-content">
+                  <p class="card-subtitle">Up To 25% Off</p>
+
+                  <h3 class="h3 card-title">Seeds & Fertilizers.</h3>
+
+                  <div class="btn btn-primary"><a href="{% url 'home' %}"></a>Shop Now</div>
+                </div>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+    -->
+
+
+        <!--==================== PRODUCTS ==================== -->
+        <section class="product section container" id="products">
+            <h2 class="section__title-center">
+                Check out our <br> Latest Arrivals
+            </h2>
+
+            <p class="product-description">
+                Here are some selected plants from our Latest Arrivals, all are in excellent shape and has a long life span.
+                Buy and enjoy best quality.
+            </p>
+
+            <div class="product__container grid">
+
+                <article class="product__card">
+                    <div class="product__circle"></div>
+                    <img src="/static/assets/product1.png" class="product__img">
+                    <h3 class="product__title">Money Plant</h3>
+                    <span class="product__price">₹97.99 INR</span>
+                    <button class="button--flex product__button">
+                        <i class="ri-shopping-bag-line"></i>
+                    </button>
+                </article>
+
+                <article class="product__card">
+                    <div class="product__circle"></div>
+                    <img src="/static/assets/product2.png" class="product__img">
+                    <h3 class="product__title">Cactus Plant</h3>
+                    <span class="product__price">₹106.99 INR</span>
+                    <button class="button--flex product__button">
+                        <i class="ri-shopping-bag-line"></i>
+                    </button>
+                </article>
+
+                <article class="product__card">
+                    <div class="product__circle"></div>
+                    <img src="/static/assets/product3.png" class="product__img">
+                    <h3 class="product__title">Aglaonema Plant</h3>
+                    <span class="product__price">₹159.83 INR</span>
+                    <button class="button--flex product__button">
+                        <i class="ri-shopping-bag-line"></i>
+                    </button>
+                </article>
+
+                <article class="product__card">
+                    <div class="product__circle"></div>
+                    <img src="/static/assets/product4.png" class="product__img">
+                    <h3 class="product__title">Monstera Deliciosa</h3>
+                    <span class="product__price">₹171.00 INR</span>
+                    <button class="button--flex product__button">
+                        <i class="ri-shopping-bag-line"></i>
+                    </button>
+                </article>
+
+                <article class="product__card">
+                    <div class="product__circle"></div>
+                    <img src="/static/assets/product5.png" class="product__img">
+                    <h3 class="product__title">Aleovera Plant</h3>
+                    <span class="product__price">₹89.99 INR</span>
+                    <button class="button--flex product__button">
+                        <i class="ri-shopping-bag-line"></i>
+                    </button>
+                </article>
+
+                <article class="product__card">
+                    <div class="product__circle"></div>
+                    <img src="/static/assets/product6.png" class="product__img">
+                    <h3 class="product__title">ArrowheadPlant</h3>
+                    <span class="product__price">₹199.79 INR</span>
+                    <button class="button--flex product__button">
+                        <i class="ri-shopping-bag-line"></i>
+                    </button>
+                </article>
+
+            </div>
+        </section>
+      
+        <!-- 
+        - #CTA
+      -->
+
+      <section class="cta">
+        <div class="container">
+
+          <p class="section-subtitle">Summer Offer</p>
+
+          <h2 class="h2 section-title">Up To 50% Off All Product.</h2>
+
+          <p class="cta-text">
+            It has survived not only five centuries also leaped.
+          </p>
+
+          <a href="{% url 'home' %}" class="btn btn-primary">
+            <span>Shop Now</span>
+
+            <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+          </a>
+
+        </div>
+      </section>
+
+
+
+
+        <!-- 
+        - #TOP PRODUCT
+      
+
+      <section class="section top-product">
+        <div class="container">
+
+          <p class="section-subtitle" style="font-size: xx-large; font-family: Georgia, 'Times New Roman', Times, serif;"><b>Trending Now</b></p>
+            <br>  
+          <hr>
+            <br>
+            <br>
+            <br>
+          
+
+          <ul class="top-product-list grid-list">
+
+            <li class="top-product-item">
+              <div class="product-card top-product-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/top-product-1.png" width="100" height="100" loading="lazy"
+                    alt="Fresh Orangey">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                    <button class="product-btn" aria-label="Quick View">
+                      <ion-icon name="eye-outline"></ion-icon>
+
+                      <div class="tooltip">Quick View</div>
+                    </button>
+                  </div>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <h3 class="h4 card-title">
+                    <a href="./product-details.html">Areca Palm</a>
+                  </h3>
+
+                  <div class="price-wrapper">
+                    <del class="del">₹178.00 INR</del>
+
+                    <data class="price" value="150.00">₹150.00 INR</data>
+                  </div>
+
+                  <button class="btn btn-primary">Add to Cart</button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="top-product-item">
+              <div class="product-card top-product-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/top-product-2.png" width="100" height="100" loading="lazy" alt="key Lime">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                    <button class="product-btn" aria-label="Quick View">
+                      <ion-icon name="eye-outline"></ion-icon>
+
+                      <div class="tooltip">Quick View</div>
+                    </button>
+                  </div>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <h3 class="h4 card-title">
+                    <a href="./product-details.html">Boston Fern</a>
+                  </h3>
+
+                  <div class="price-wrapper">
+                    <del class="del">₹250.00 INR</del>
+
+                    <data class="price" value="210.00">₹210.00 INR</data>
+                  </div>
+
+                  <button class="btn btn-primary">Add to Cart</button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="top-product-item">
+              <div class="product-card top-product-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/top-product-3.png" width="100" height="100" loading="lazy"
+                    alt="Fresh Watermelon">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                    <button class="product-btn" aria-label="Quick View">
+                      <ion-icon name="eye-outline"></ion-icon>
+
+                      <div class="tooltip">Quick View</div>
+                    </button>
+                  </div>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <h3 class="h4 card-title">
+                    <a href="./product-details.html">Aleovera Plant</a>
+                  </h3>
+
+                  <div class="price-wrapper">
+                    <del class="del">₹115.00 INR</del>
+
+                    <data class="price" value="96.00">₹96.00 INR</data>
+                  </div>
+
+                  <button class="btn btn-primary">Add to Cart</button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="top-product-item">
+              <div class="product-card top-product-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/top-product-4.png" width="100" height="100" loading="lazy" alt="Stobery">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                    <button class="product-btn" aria-label="Quick View">
+                      <ion-icon name="eye-outline"></ion-icon>
+
+                      <div class="tooltip">Quick View</div>
+                    </button>
+                  </div>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <h3 class="h4 card-title">
+                    <a href="./product-details.html">Cactus</a>
+                  </h3>
+
+                  <div class="price-wrapper">
+                    <del class="del">₹132.00 INR</del>
+
+                    <data class="price" value="99.00">₹99.00 INR</data>
+                  </div>
+
+                  <button class="btn btn-primary">Add to Cart</button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="top-product-item">
+              <div class="product-card top-product-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/top-product-5.png" width="100" height="100" loading="lazy"
+                    alt="Pomagranate Fruit">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                    <button class="product-btn" aria-label="Quick View">
+                      <ion-icon name="eye-outline"></ion-icon>
+
+                      <div class="tooltip">Quick View</div>
+                    </button>
+                  </div>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <h3 class="h4 card-title">
+                    <a href="./product-details.html">Peace Lily Plant</a>
+                  </h3>
+
+                  <div class="price-wrapper">
+                    <del class="del">₹250.00 INR</del>
+
+                    <data class="price" value="210.00">₹210.00 INR</data>
+                  </div>
+
+                  <button class="btn btn-primary">Add to Cart</button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="top-product-item">
+              <div class="product-card top-product-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/top-product-6.png" width="100" height="100" loading="lazy"
+                    alt="Lens Results Broccoli">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                    <button class="product-btn" aria-label="Quick View">
+                      <ion-icon name="eye-outline"></ion-icon>
+
+                      <div class="tooltip">Quick View</div>
+                    </button>
+                  </div>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <h3 class="h4 card-title">
+                    <a href="./product-details.html">Bougainvillea Plant</a>
+                  </h3>
+
+                  <div class="price-wrapper">
+                    <del class="del">₹150.00 INR</del>
+
+                    <data class="price" value="359.00">₹129.00 INR</data>
+                  </div>
+
+                  <button class="btn btn-primary">Add to Cart</button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="top-product-item">
+              <div class="product-card top-product-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/top-product-7.png" width="100" height="100" loading="lazy"
+                    alt="Lens Results Spinach">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                    <button class="product-btn" aria-label="Quick View">
+                      <ion-icon name="eye-outline"></ion-icon>
+
+                      <div class="tooltip">Quick View</div>
+                    </button>
+                  </div>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <h3 class="h4 card-title">
+                    <a href="./product-details.html">Garlic Vine Plant</a>
+                  </h3>
+
+                  <div class="price-wrapper">
+                    <del class="del">₹199.00 INR</del>
+
+                    <data class="price" value="120.00">₹120.00 INR</data>
+                  </div>
+
+                  <button class="btn btn-primary">Add to Cart</button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="top-product-item">
+              <div class="product-card top-product-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/top-product-8.png" width="100" height="100" loading="lazy"
+                    alt="Lorigun Artificial">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                    <button class="product-btn" aria-label="Quick View">
+                      <ion-icon name="eye-outline"></ion-icon>
+
+                      <div class="tooltip">Quick View</div>
+                    </button>
+                  </div>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <h3 class="h4 card-title">
+                    <a href="./product-details.html">Firetail Chenille</a>
+                  </h3>
+
+                  <div class="price-wrapper">
+                    <del class="del">₹185.00 INR</del>
+
+                    <data class="price" value="149.00">₹149.00 INR</data>
+                  </div>
+
+                  <button class="btn btn-primary">Add to Cart</button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="top-product-item">
+              <div class="product-card top-product-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/top-product-9.png" width="100" height="100" loading="lazy"
+                    alt="Leaf lettuce">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                    <button class="product-btn" aria-label="Quick View">
+                      <ion-icon name="eye-outline"></ion-icon>
+
+                      <div class="tooltip">Quick View</div>
+                    </button>
+                  </div>
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <h3 class="h4 card-title">
+                    <a href="./product-details.html">Red Anthurium Plant</a>
+                  </h3>
+
+                  <div class="price-wrapper">
+                    <del class="del">₹163.00 INR</del>
+
+                    <data class="price" value="107.00">₹107.00 INR</data>
+                  </div>
+
+                  <button class="btn btn-primary">Add to Cart</button>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+    -->
+
+        <!--==================== QUESTIONS ====================-->
+
+        <br>
+        <section class="questions section" id="faqs">
+            <h2 class="section__title-center questions__title container">
+                Some common questions <br> were often asked
+            </h2>
+
+            <div class="questions__container container grid">
+                <div class="questions__group">
+                    <div class="questions__item">
+                        <header class="questions__header">
+                            <i class="ri-add-line questions__icon"></i>
+                            <h3 class="questions__item-title">
+                                My flowers are falling off or dying?
+                            </h3>
+                        </header>
+
+                        <div class="questions__content">
+                            <p class="questions__description">
+                                Plants are easy way to add color energy and transform your
+                                space but which planet is for you. Choosing the right plant.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="questions__item">
+                        <header class="questions__header">
+                            <i class="ri-add-line questions__icon"></i>
+                            <h3 class="questions__item-title">
+                                What causes leaves to become pale?
+                            </h3>
+                        </header>
+
+                        <div class="questions__content">
+                            <p class="questions__description">
+                                Plants are easy way to add color energy and transform your
+                                space but which planet is for you. Choosing the right plant.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="questions__item">
+                        <header class="questions__header">
+                            <i class="ri-add-line questions__icon"></i>
+                            <h3 class="questions__item-title">
+                                What causes brown crispy leaves?
+                            </h3>
+                        </header>
+
+                        <div class="questions__content">
+                            <p class="questions__description">
+                                Plants are easy way to add color energy and transform your
+                                space but which planet is for you. Choosing the right plant.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="questions__group">
+                    <div class="questions__item">
+                        <header class="questions__header">
+                            <i class="ri-add-line questions__icon"></i>
+                            <h3 class="questions__item-title">
+                                How do i choose a plant?
+                            </h3>
+                        </header>
+
+                        <div class="questions__content">
+                            <p class="questions__description">
+                                Plants are easy way to add color energy and transform your
+                                space but which planet is for you. Choosing the right plant.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="questions__item">
+                        <header class="questions__header">
+                            <i class="ri-add-line questions__icon"></i>
+                            <h3 class="questions__item-title">
+                                How do I change the pots?
+                            </h3>
+                        </header>
+
+                        <div class="questions__content">
+                            <p class="questions__description">
+                                Plants are easy way to add color energy and transform your
+                                space but which planet is for you. Choosing the right plant.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="questions__item">
+                        <header class="questions__header">
+                            <i class="ri-add-line questions__icon"></i>
+                            <h3 class="questions__item-title">
+                                Why are gnats flying around my plant?
+                            </h3>
+                        </header>
+
+                        <div class="questions__content">
+                            <p class="questions__description">
+                                Plants are easy way to add color energy and transform your
+                                space but which planet is for you. Choosing the right plant.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        - #TESTIMONIALS
+      -->
+
+      <section class="section testimonials">
+        <div class="container">
+
+          <p class="section-subtitle" style="font-size: xx-large; font-family: Georgia, 'Times New Roman', Times, serif;"><b>Feedback From Happy Clients</b></p>
+          <br>
+          <hr>
+          <br>
+          <br>
+          <br>
+
+          <ul class="has-scrollbar">
+
+            <li class="testi-item">
+              <div class="testi-card">
+
+                <div class="card-header">
+
+                  <img src="/static/assets/quote-left.png" width="25" height="25" aria-hidden="true" alt="">
+
+                  <img src="/static/assets/testimonial-1.jpg" width="90" height="90" loading="lazy"
+                    alt="Willow Peralta" class="card-avatar">
+
+                  <img src="/static/assets/quote-right.png" width="25" height="25" aria-hidden="true" alt="">
+
+                </div>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <blockquote class="card-text">
+                  They Offer a wide range of fresh plant and seeds at affordable rates. The customer support is really good.
+                   Really helpful for the first-timers. They provide you with all these tips and care for gardening and trust me,they are really helpful.
+                   I really recommend it.
+                </blockquote>
+
+                <h3 class="card-title">Keshav Kumar</h3>
+
+                <p class="card-subtitle">Lucknow, Uttar Pradesh</p>
+
+              </div>
+            </li>
+
+            <li class="testi-item">
+              <div class="testi-card">
+
+                <div class="card-header">
+
+                  <img src="/static/assets/quote-left.png" width="25" height="25" aria-hidden="true" alt="">
+
+                  <img src="/static/assets/testimonial-2.jpg" width="90" height="90" loading="lazy"
+                    alt="Pamelia Hamrick" class="card-avatar">
+
+                  <img src="/static/assets/quote-right.png" width="25" height="25" aria-hidden="true" alt="">
+
+                </div>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <blockquote class="card-text">
+                  Their staff is professionally trained. They provide you with different and unique gardening ideas. The quality of Fertilizers
+                  are very good and they also guide which Fertilizer is good for what plant.
+                  It was a Great Experience.
+                  I really liked it.
+                </blockquote>
+
+                <h3 class="card-title">Kalpana Singh</h3>
+
+                <p class="card-subtitle">Pune, Maharastra</p>
+
+              </div>
+            </li>
+
+            <li class="testi-item">
+              <div class="testi-card">
+
+                <div class="card-header">
+
+                  <img src="/static/assets/quote-left.png" width="25" height="25" aria-hidden="true" alt="">
+
+                  <img src="/static/assets/testimonial-3.jpg" width="90" height="90" loading="lazy"
+                    alt="Novella Gerber" class="card-avatar">
+
+                  <img src="/static/assets/quote-right.png" width="25" height="25" aria-hidden="true" alt="">
+
+                </div>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <blockquote class="card-text">
+                  Just had my order delivered and the plants arrived looking very happy and healthy.I appreciate
+                   the free shipping of order, cool choices of plants and tips as well.
+                   Online Ordering was easy and on-time delivery,thanks. 
+                </blockquote>
+
+                <h3 class="card-title">Yasmin Imam</h3>
+
+                <p class="card-subtitle">Hyderabad, Telangana</p>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+        <!--==================== CONTACT ====================-->
+
+        <section class="contact section container" id="contact">
+            <div class="contact__container grid">
+                <div class="contact__box">
+                    <h2 class="section__title">
+                        Reach out to us today <br> via any of the given <br> information
+                    </h2>
+
+                    <div class="contact__data">
+                        <div class="contact__information">
+                            <h3 class="contact__subtitle">Call us for instant support</h3>
+                            <span class="contact__description">
+                                <i class="ri-phone-line contact__icon"></i>
+                                +91 999 888 7773
+                            </span>
+                        </div>
+
+                        <div class="contact__information">
+                            <h3 class="contact__subtitle">Write us by mail</h3>
+                            <span class="contact__description">
+                                <i class="ri-mail-line contact__icon"></i>
+                                info@nursery.com
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="" class="contact__form" method="post">
+                      {% csrf_token %}
+                    <div class="contact__inputs">
+                        <div class="contact__content">
+                            <input type="email" placeholder=" " class="contact__input" name="email">
+                            <label for="" class="contact__label">Email</label>
+                        </div>
+
+                        <div class="contact__content">
+                            <input type="text" placeholder=" " class="contact__input" name="subject">
+                            <label for="" class="contact__label">Subject</label>
+                        </div>
+
+                        <div class="contact__content contact__area">
+                            <textarea name="message" placeholder=" " class="contact__input"></textarea>
+                            <label for="" class="contact__label">Message</label>
+                        </div>
+                    </div>
+
+                    <button class="button button--flex">
+                    
+                        Send Message
+                        <i class="ri-arrow-right-up-line button__icon"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+<!--========================================= #BLOG ==================================================-->
+
+      <section class="section blog" id="blog">
+        <div class="container">
+
+          <p class="section-subtitle" style="font-size: xx-large ;"><b> -- News And Blog --</b></p>
+
+          <h2 class="h2 section-title" style=" padding-bottom:5px; font-size:x-large; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Bright Sides of Gardening</h2>
+
+          <ul class="blog-list">
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/blog-1.png" width="451" height="310" loading="lazy"
+                    alt="We automatically search for andapply coupons when." class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+
+                    <div class="wrapper-item">
+                      <ion-icon name="calendar-clear-outline"></ion-icon>
+
+                      <time class="text" datetime="2022-04-13">23 April, 2024</time>
+                    </div>
+
+                    <div class="wrapper-item">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <span class="text">18 Million</span>
+                    </div>
+
+                  </div>
+
+                  <h3 class="h3 card-title" style="color: black;">
+                    <a href="./404.html">Gardening Bonds: Exploring Family Dynamics, Bonding,  Environmental Awareness and Education Through Horticulture.</a>
+                  </h3>
+
+                  <a href="{% url 'blog' %}" class="btn btn-primary">
+                    <span>Read More</span>
+
+                    <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/blog-2.png" width="451" height="310" loading="lazy"
+                    alt="How to get more traffic in your website of ecommerce." class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+
+                    <div class="wrapper-item">
+                      <ion-icon name="calendar-clear-outline"></ion-icon>
+
+                      <time class="text" datetime="2022-04-13">17 April, 2024</time>
+                    </div>
+
+                    <div class="wrapper-item">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <span class="text">23 Million</span>
+                    </div>
+
+                  </div>
+
+                  <h3 class="h3 card-title" style="color: black;">
+                    <a href="./404.html">Seeds of Discovery: Student-led Exploration in Plant Science, Ecology, Agriculture, and Sustainability.</a>
+                  </h3>
+
+                  <a href="{% url 'blog' %}" class="btn btn-primary">
+                    <span>Read More</span>
+
+                    <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+                  <img src="/static/assets/blog-3.png" width="451" height="310" loading="lazy"
+                    alt="25 Rules and regulation to be successful in your business." class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+
+                    <div class="wrapper-item">
+                      <ion-icon name="calendar-clear-outline"></ion-icon>
+
+                      <time class="text" datetime="2022-04-13">09 April, 2024</time>
+                    </div>
+
+                    <div class="wrapper-item">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <span class="text">19 Million</span>
+                    </div>
+
+                  </div>
+
+                  <h3 class="h3 card-title" style="color: black;">
+                    <a href="./404.html"> Roots of Urban Agriculture: Navigating Food Systems, Sustainability, Community Resilience, and Genetic Varieties in Urban Gardens.</a>
+                  </h3>
+
+                  <a href="{% url 'blog' %}" class="btn btn-primary">
+                    <span>Read More</span>
+
+                    <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+    </main>
+
+    <!--==================== FOOTER ====================-->
+
+    <footer class="footer">
+
+      <div class="footer-top">
+        <div class="container" style="margin: 20px;">
+  
+          <div class="footer-brand">
+  
+            <a href="#home" class="logo">NURSERY<span class="span">store</span></a>
+  
+            <p class="footer-text">
+              It was popularised in the 1960s with the release of Letraset sheets containing Lorem passages and more
+              recently with desktop publishing software like including.
+            </p>
+  
+            <ul class="social-list">
+  
+              <li>
+                <a href="https://www.facebook.com" class="social-link">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+  
+              <li>
+                <a href="https://www.skype.com" class="social-link">
+                  <ion-icon name="logo-skype"></ion-icon>
+                </a>
+              </li>
+  
+              <li>
+                <a href="https://www.twitter.com" class="social-link">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+  
+              <li>
+                <a href="https://www.linkedin.com" class="social-link">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+              </li>
+  
+            </ul>
+  
+          </div>
+  
+          <ul class="footer-list">
+  
+            <li>
+              <p class="footer-list-title" ><b>COMPANY</b></p>
+            </li>
+  
+            <li>
+              <a href="{% url 'AboutUs' %}" class="footer-link">About Us </a>
+            </li>
+            <br>
+  
+            <li>
+              <a href="{% url 'home' %}" class="footer-link">Shop</a>
+            </li>
+            <br>
+
+            <li>
+              <a href="{% url 'blog' %}" class="footer-link">Blog</a>
+            </li>
+  
+            <br>
+            <li>
+              <a href="{% url 'home' %}" class="footer-link">Product</a>
+            </li>
+  
+            <!-- <br> -->
+            <li>
+              <p class="footer-link"> contact</p>
+            </li>
+  
+          </ul>
+  
+          <ul class="footer-list">
+  
+            <li>
+              <p class="footer-list-title"><b>CONTACT</b></p>
+            </li>
+  
+            <li class="footer-item">
+              <div class="contact-icon">
+                <ion-icon name="location-outline"></ion-icon>
+              </div>
+  
+              <address class="contact-link">
+                abcxyz area,123 Muzazzarpur,Bihar-842003
+              </address>
+            </li>
+  
+            <li class="footer-item">
+              <div class="contact-icon">
+                <ion-icon name="call-outline"></ion-icon>
+              </div>
+  
+              <a href="tel:+91123456789" class="contact-link">+91 123 456 789</a>
+            </li>
+  
+            <li class="footer-item">
+              <div class="contact-icon">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
+  
+              <a href="mailto:vats1234@help.com" class="contact-link">nursery1234@help.com</a>
+            </li>
+  
+          </ul>
+  
+          <div class="footer-list">
+  
+            <p class="footer-list-title"><b>NEWSLETTER</b></p>
+  
+            <p class="newsletter-text">
+              You will be notified when somthing new will be appear.
+            </p>
+  
+            <form action="" class="footer-form">
+              <input type="email" name="email" placeholder="Email Address *" required class="footer-input">
+  
+              <button type="submit" class="footer-form-btn" aria-label="Submit">
+                <ion-icon name="mail-outline"></ion-icon>
+              </button>
+            </form>
+  
+          </div>
+  
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+        <div class="container">
+  
+          <p class="copyright">
+            &copy; 2024 <a href="#" class="copyright-link">VATS Store &nbsp;</a>. All Rights Reserved.
+          </p>
+  
+          <ul class="footer-bottom-list">
+  
+            <li>
+              <a href="#" class="footer-bottom-link">Term and Service</a>
+            </li>
+  
+            <li>
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+            </li>
+  
+          </ul>
+  
+        </div>
+      </div>
+  
+    </footer>
+  
+    <!--=============== SCROLL UP ===============-->
+    <a href="#" class="scrollup" id="scroll-up"><i class="ri-arrow-up-fill scrollup__icon"></i></a>
+
+    <!--=============== SCROLL REVEAL ===============-->
+    <script src="{% static 'js/scrollreveal.min.js' %}"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

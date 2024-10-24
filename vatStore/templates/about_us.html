@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us Page</title>
+    <link rel="stylesheet" href="{% static 'css/about_us.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-background"></div> <!-- Background image container -->
+        <h1>About Us</h1>
+    </header>
+    <main>
+        <section id="bio">
+            <img src="{% static 'app_img/Screenshot 2024-04-14 163740.png' %} " alt="Profile Picture">
+            <section>
+                <strong>
+                    <p>Welcome to our e-nursery project! We are passionate about providing you with the best selection of plants, flowers, and gardening supplies.</p>
+                    <p>Our team consists of experienced gardeners, horticulturists, and plant enthusiasts who are dedicated to helping you create and maintain a beautiful garden.</p>
+                    <p>At our e-nursery, you'll find a wide range of products, from seeds and bulbs to pots and tools, all carefully selected for their quality and value.</p>
+                    <p>Whether you're a seasoned gardener or just starting out, we're here to support you on your gardening journey. Feel free to explore our website and reach out to us with any questions or concerns.</p>
+                </strong>
+            </section>
+        </section>
+    
+        <!-- Image gallery section -->
+        <div class="gallery">
+            <div class="image-container">
+                <img src="{% static 'app_img/pexels-julia-kuzenkov-442028-1974508.jpg' %}" alt="Green Plants">
+                <div class="overlay">
+                    <div class="text">Green Plants</div>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'app_img/pexels-michelle-leman-6765923.jpg' %}" alt="Colorful Plants">
+                <div class="overlay">
+                    <div class="text">Colorful Plants</div>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'app_img/pexels-cottonbro-4505178 - Copy.jpg' %}" alt="Gardening Tools">
+                <div class="overlay">
+                    <div class="text">Gardening Tools</div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Three containers side by side -->
+            <h1>Features</h1>
+            <div class="container-wrapper">
+                <div class="container">
+                    <img src="{% static 'app_img/Screenshot 2024-04-19 174152.png' %}" alt="Icon"> <!-- Icon -->
+                        <h3>Find Issues in your locality and update it using your account</h3>
+                </div>
+                <div class="container">
+                    <img src="{% static 'app_img/Screenshot 2024-04-19 174233.png' %}" alt="Icon"> <!-- Icon -->
+                        <h3>Create community for your issue and share solution with members</h3>
+                </div>
+                <div class="container">
+                    <img src="{% static 'app_img/Screenshot 2024-04-19 174310.png' %}" alt="Icon"> <!-- Icon -->
+                        <h3>Invite members on meetup and share your victory on news feed</h3>
+                </div>
+            </div>
+
+        <!-- New two-container wrapper -->
+        <div class="two-container-wrapper">
+            <!-- Two new containers -->
+            <div class="two-container" style="background-image: url('/static/app_img/Screenshot\ 2024-04-20\ 142132.png'); height: 400; width: 500; " > 
+
+                <!-- Image fills the container -->
+            </div>
+            <div class="two-container" style="font-size: 30px;">
+                <!-- <h3>About us</h3> -->
+                <h2>We provide best gardening & Landscaping services</h2>
+                <ul>
+                    <li>Garden Maintenance</li>
+                    <li>Jet Washing</li>
+                    <li>Trained and Qualified Staff</li>
+                    <li>Individual Selection of Plants</li>
+                    <li>Ground levelling</li>
+                    <li>Winter Services</li>
+                    <li>Excellent Designs</li>
+                    <li>Available 24/7</li>
+                </ul>
+            </div>
+        </div>
+        <div class="my-container"> </div>
+        <div class="my-container" style="font-size: 30px;">
+            <!-- <h1>Our Services</h1> -->
+        <h2>What Can We Offer</h2>
+        <ul>Gardenias' mission is to provide our customers with responsive service and unsurpassed quality at an affordable price.</ul>
+        <div class="left-container">
+            <img src="{% static 'app_img/Screenshot 2024-04-20 212319.png' %}" alt="" height="800" width="1500" >
+        </div>
+        
+
+            <!-- Image gallery section -->
+            <div class="gallery">
+                <div class="image-container">
+                    <img src="{% static 'app_img/pexels-mooncrescent-1201798.jpg' %}" alt="Multiple Plants">
+                    <div class="overlay">
+                        <div class="text">Multiple Plants</div>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <img src="{% static 'app_img/pexels-secret-garden-333350-931154 - Copy.jpg' %}" alt="Beautiful Roses">
+                    <div class="overlay">
+                        <div class="text">Beautiful Roses</div>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <img src="{% static 'app_img/pexels-yaroslav-shuraev-8889704 - Copy.jpg' %}" alt="Watering Garden">
+                    <div class="overlay">
+                        <div class="text">Watering Garden</div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <footer>
+        <p>&copy; E-Nursery</p>
+    </footer>
+    
+            
+</body>
+</html>
